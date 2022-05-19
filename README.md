@@ -1,8 +1,6 @@
 # Renegade-MERN
 
-# Renegade-React
-
-## Objective
+## Objectivegit
 
 We are creating a website for Renegade Services which is an umbrella company that wears many hats. They are looking to expand into E-Commerce and start selling their own brand of clothing and are looking to start their online presence.
 
