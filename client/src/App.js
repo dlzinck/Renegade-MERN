@@ -4,6 +4,8 @@ import React from 'react';
 //importing switch and route from router-dom
 import { Switch, Route } from 'react-router-dom';
 
+// component imports
+
 // components that will go everywhere will be nested here
 function App() {
   return (
@@ -23,6 +25,6 @@ function App() {
     
     
   );
-}
+};
 
 export default App;
