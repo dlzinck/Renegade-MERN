@@ -1,23 +1,33 @@
+// importing react
 import React from 'react';
+
+// importing link for footer linking 
 import { Link } from 'react-router-dom';
 
-function Footer() {
+// footer component
+const Footer = () => {
+    //needing to add links to respective components 
     return (
-        <div>
-            <nav>
-                <ul>
-                    <li><Link to="/">HOME</Link>
-                    </li>
-                    <li><Link to="/about ">ABOUT</Link>
-                    </li>
-                    <li><Link to="/contact">CONTACT US</Link>
-                    </li>
-                    <li><Link to="/shop">SHOP</Link>
-                    </li>             
-                </ul>
-            </nav>
-        </div>
-    )
-}
+        <footer className = 'footer' >
+            <div className='footer-title'>
+                <h3><Link to="/">HOME</Link></h3>
+            </div>
+            <div className='footer-title'>
+                <h3><Link to="/about ">ABOUT</Link></h3>
+            </div>
+            <div className='footer-title'>
+                <h3><Link to="/contact">CONTACT US</Link></h3>
+            </div>
+            <div className='footer-title'>
+                <h3><Link to="/shop">SHOP</Link></h3>
+            </div>
+                <div className='footer-copyright'>
+                <span>RENEGADE ATTIRE, LLC | © {new Date().getFullYear()} </span>
+                </div>
+        </footer>        
 
-export default Footer;
+
+    );
+};
+
+export default Footer; 
