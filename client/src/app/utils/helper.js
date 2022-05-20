@@ -10,3 +10,11 @@ export function validateEmail(email) {
     }
     return false;
   }
+
+  export function checkUserName(input) {
+    const userName = /^[a-zA-Z0-9]{8}$/;
+    if (input.match(userName)) {
+      return true;
+    }
+    return false;
+  }
