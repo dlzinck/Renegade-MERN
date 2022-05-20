@@ -25,13 +25,6 @@ const Footer = () => {
                 <span>RENEGADE ATTIRE, LLC | © {new Date().getFullYear()} </span>
                 </div>
         </footer>        
-        
-
-
-
-
-
-
 
 
     );
