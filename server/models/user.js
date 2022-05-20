@@ -1,4 +1,5 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
+
 
 // Schema to create Student model
 const userSchema = new Schema(
@@ -29,6 +30,7 @@ const userSchema = new Schema(
   }
 );
 
-const Student = model('user', studentSchema);
 
-module.exports = Student; 
+const User = model("user", userSchema);
+
+module.exports = User;
