@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 
+
 // Schema to create Student model
 const userSchema = new Schema(
   {
@@ -28,6 +29,7 @@ const userSchema = new Schema(
     },
   }
 );
+
 
 const User = model("user", userSchema);
 
