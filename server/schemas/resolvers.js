@@ -8,4 +8,10 @@ const resolvers = {
       return User.findOne({ username }).populate("user");
     },
   },
+  Mutation: {
+    addUser: async (parent, { username, password, email }) => {
+      const user = await User.create({ username, password, email });
+      const token = signToken(user);
+      return { token, user };
+    },
 };
