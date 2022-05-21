@@ -13,7 +13,7 @@ import Contact from './endpoints/Contact/Contact';
 import Shop from './endpoints/Shop/Shop';
 import NavBar from './components/NavBar/NavBar';
 import Logout from './components/Logout/Logout';
-import Login from './components/Login/Login';
+// import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Footer from './components/Footer/Footer';
 
@@ -35,7 +35,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/shop" element={<Shop />} />
               <Route path="/logout" element={<Logout />} />
-              <Route path="/login" element={<Login />} />
+              {/* <Route path="/login" element={<Login />} /> */}
               <Route path="/register" element={<Register />} />
 
             </Routes>

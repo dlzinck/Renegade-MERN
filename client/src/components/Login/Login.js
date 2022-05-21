@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { validateEmail, checkPassword } from '../../utils/helper';
 import { Link } from 'react-router-dom';
 
-function Login() {
+function Login({ props, sendDataToParent}) {
     const [email, setEmail] = useState('');
     // const [userName, setUserName] = useSate(''); ** needs api call to the server side to generate the username greeting 
     const [password, setPassword] = useState('');
@@ -41,6 +41,8 @@ function Login() {
         setEmail('');
         setErrorMessage('');
         alert(`Hello ${email}`);
+        sendDataToParent(true)
+        localStorage.setItem("isLoggedIn", true)
       }; // {userName} needs an api call to the back end after login
     return (
         <div> 
