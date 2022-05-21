@@ -1,9 +1,10 @@
+//importing CCS style 
+// import './App.css'
+// import './style.css'
 // importing react 
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-//importing CCS style 
-// import './App.css'
 
 //importing components 
 import Home from './endpoints/Home/Home';
@@ -19,8 +20,8 @@ import Footer from './components/Footer/Footer';
 
 function App() {
   return (
-    
-    <div className="App">
+    <>
+    {/* <div className="App"> */}
       
         <BrowserRouter>
           <NavBar />
@@ -41,9 +42,9 @@ function App() {
           
           <Footer />
         </BrowserRouter>
-
-      </div>
-
+      
+      {/* </div> */}
+      </>
   );
 };
 

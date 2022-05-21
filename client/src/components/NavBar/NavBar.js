@@ -4,8 +4,15 @@ import ShoppingCart from '../ShoppingCart/ShoppingCart';
 
 function NavBar() {
 
-    const [isCartOpen, setIsCartOpen] = useState(false) // put in a zero for the first one, 
+    const [isCartOpen, setIsCartOpen] = useState(false) // put in a zero for the first one,
 
+    const show = {
+      display: 'block'
+    };
+  
+    const hide = {
+      display: 'none'
+    };    
     
 
     return (
@@ -32,7 +39,8 @@ function NavBar() {
 
                 </ul>
             </nav>
-        <div
+            {/* shopping cart toggle with css needed */}
+        {/* <div
           className={isCartOpen ? 'mini-cart-open' : 'hidden-mini-cart'}
           aria-hidden={`${isCartOpen ? false : true}`}
         >
@@ -45,7 +53,14 @@ function NavBar() {
             }
             onClick={() => setIsCartOpen(!isCartOpen)}
           />
+        </div> */}
+
+      {/* no css version of view hidden on shopping cart*/ }
+      {
+        <div style={isCartOpen ? show : hide}>
+          <ShoppingCart />
         </div>
+      }   
         </div>
     )
 }
