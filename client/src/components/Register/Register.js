@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { validateEmail, checkPassword, checkUserName } from '../../utils/helper';
+import { useNavigate } from "react-router-dom"
 
 function Register() {
     const[firstName, setFirstName] = useState('');
@@ -9,6 +10,7 @@ function Register() {
     const [password, setPassword] = useState('');
     const [verifyPassword, setVerifyPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    let navigate = useNavigate();
 
     const handleRegistrationInput = (e) => {
         const { target } = e;
@@ -112,7 +114,30 @@ function Register() {
                 onKeyUp={handleRegistrationValidate}
                 type='password'
                 placeholder='Verify Password' />
-                <button type='button'> submit </button>
+                <button
+                type="button"
+                onClick={() => {
+                const registration = {
+                firstName: firstName,
+                lastName: lastName,
+                userName: userName,
+                emailAddress: emailAddress,
+                password: password,
+                verifyPassword: verifyPassword,
+            }
+            if (errorMessage === "") {
+              localStorage.setItem(
+                "registeredUser",
+                JSON.stringify(registration)
+              )
+              localStorage.setItem("isLoggedIn", true)
+              navigate("/", { replace: true })
+            }
+          }}
+        >
+          {" "}
+          submit{" "}
+        </button>
             </form>
             {errorMessage && (
         <div>
