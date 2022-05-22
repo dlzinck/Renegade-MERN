@@ -1,6 +1,9 @@
 const express = require('express');
 // Run npm install mongodb and require mongodb and MongoClient class
 const mongodb = require('mongodb').MongoClient;
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const bodyParser = require('body-parser');
+const path = require("path")
 
 const app = express();
 const port = 3001;
