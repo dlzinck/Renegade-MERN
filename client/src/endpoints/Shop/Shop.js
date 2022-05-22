@@ -2,12 +2,13 @@
 import React, { useState } from "react";
 
 //importing child components Data and Card 
-import Data from "../..Data";
-import Card from "../../components/ProductCard";
+import Data from "../../Data";
+import Card from "../../components/ProductCard/ProductCard";
 
 function Shop() {
 
     const [item, setItem] = useState(Data);
+
     return (
         
         <div>
@@ -25,6 +26,6 @@ function Shop() {
             
         </div>
     );
-}
+};
 
 export default Shop;
