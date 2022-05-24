@@ -93,7 +93,7 @@ li {
     display: flex;
     justify-content: center;
 }
-img {
+.footer-img {
     height: 100px;
     width: 250px;
     padding: 5px;
