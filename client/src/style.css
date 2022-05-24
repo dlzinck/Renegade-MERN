@@ -23,3 +23,22 @@
     text-decoration:none;
     color: white;
 }
+
+.mini-cart {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    background-color: white;
+    height: 100%;
+    width: 470px;
+    z-index: 1000; 
+  }
+  
+  
+  .mini-cart-open .mini-cart {
+    visibility: visible;
+    right: 0;
+  }
+
+  

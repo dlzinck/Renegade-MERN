@@ -69,7 +69,7 @@ function NavBar(props) {
                 </ul>
             </nav>
             {/* shopping cart toggle with css needed */}
-        {/* <div
+        <div
           className={isCartOpen ? 'mini-cart-open' : 'hidden-mini-cart'}
           aria-hidden={`${isCartOpen ? false : true}`}
         >
@@ -82,14 +82,14 @@ function NavBar(props) {
             }
             onClick={() => setIsCartOpen(!isCartOpen)}
           />
-        </div> */}
+        </div>
 
       {/* no css version of view hidden on shopping cart*/ }
-      {
+      {/* {
         <div style={isCartOpen ? show : hide}>
           <ShoppingCart />
         </div>
-      }   
+      }    */}
        {
         <div style={isLoginOpen ? show : hide}>
           <Login
