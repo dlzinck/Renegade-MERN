@@ -3,13 +3,21 @@ import { validateEmail, checkPassword, checkUserName } from '../../utils/helper'
 import { useNavigate } from "react-router-dom"
 
 function Register() {
-    const[firstName, setFirstName] = useState('');
-    const[lastName, setLastName] = useState('');
-    const[userName, setUserName] = useState('');
-    const[emailAddress, setEmailAddress] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [userName, setUserName] = useState('');
+    const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
     const [verifyPassword, setVerifyPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [didRegister, setDidRegister] = useState(false)
+    const show = {
+      display: 'block'
+    };
+  
+    const hide = {
+      display: 'none'
+    }; 
     let navigate = useNavigate();
 
     const handleRegistrationInput = (e) => {
