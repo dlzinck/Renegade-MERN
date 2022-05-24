@@ -45,6 +45,7 @@ function NavBar(props) {
                         </button>
                     </li>
                     <li>
+                      {/* for use without css  */}
                     {!didLogin ? (
                       <button
                         onClick={() => {
@@ -90,8 +91,11 @@ function NavBar(props) {
           <ShoppingCart />
         </div>
       }    */}
-       {
-        <div style={isLoginOpen ? show : hide}>
+       {<div
+          className={isLoginOpen ? 'login-open' : 'login-hidden'}
+          aria-hidden={`${isLoginOpen ? false : true}`}
+        >
+        <div class="login-menu">
           <Login
             sendDataToParent={(event) => {
               console.log("from event")
@@ -99,6 +103,7 @@ function NavBar(props) {
               setDidLogin(event)
             }}
             />
+        </div>
         </div>
          }
          </div>
