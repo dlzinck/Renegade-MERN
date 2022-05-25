@@ -9,18 +9,22 @@ const Footer = () => {
     //needing to add links to respective components 
     return (
         <footer className = 'footer' >
-            <div className='footer-title'>
-                <h3><Link to="/">HOME</Link></h3>
+            <div className='footer-logo'>
+                <img className='footer-img' src='/images/RA-Logo-White.png'></img>
             </div>
-            <div className='footer-title'>
-                <h3><Link to="/about ">ABOUT</Link></h3>
-            </div>
-            <div className='footer-title'>
-                <h3><Link to="/contact">CONTACT US</Link></h3>
-            </div>
-            <div className='footer-title'>
-                <h3><Link to="/shop">SHOP</Link></h3>
-            </div>
+            <ul className='footer-title'>
+
+                <li><Link to="/">HOME</Link></li>
+            
+            
+                <li><a href='#about'>ABOUT</a></li>
+            
+            
+                <li><Link to="/contact">CONTACT US</Link></li>
+            
+            
+                <li><Link to="/shop">SHOP</Link></li>
+            </ul>
                 <div className='footer-copyright'>
                 <span>RENEGADE ATTIRE, LLC | © {new Date().getFullYear()} </span>
                 </div>
