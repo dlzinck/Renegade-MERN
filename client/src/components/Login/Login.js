@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import { validateEmail, checkPassword } from '../../utils/helper';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import Register from '../Register/Register';
 
 function Login({ props, sendDataToParent}) {
     const [email, setEmail] = useState('');
     // const [userName, setUserName] = useSate(''); ** needs api call to the server side to generate the username greeting 
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-
+    const [isRegistrationOpen, setIsRegistrationOpen] = useState(false)
+    const show = {
+      display: 'block'
+    };
+  
+    const hide = {
+      display: 'none'
+    }; 
     const handleInputUpdate = (e) => {
         // Getting the value and name of the input which triggered the change
         const { target } = e;
@@ -45,6 +53,7 @@ function Login({ props, sendDataToParent}) {
         localStorage.setItem("isLoggedIn", true)
       }; // {userName} needs an api call to the back end after login
     return (
+        
         <div> 
             <p>Hello UserName </p> 
             <form className="form">
@@ -65,7 +74,16 @@ function Login({ props, sendDataToParent}) {
                 <button type="button" onClick={handleLoginSubmit}>Login</button>
             </form>
             <div>
-                <Link to="/register" >Register</Link>
+                {/* <Link to="/register" >Register</Link> */}
+                <button onClick={() => {
+                        setIsRegistrationOpen(!isRegistrationOpen);
+                        console.log("in onclick listener");
+                        }}>
+                          Register
+                        </button>
+                        <div style={isRegistrationOpen ? show : hide}>
+          <Register />
+        </div>
             </div>
             {errorMessage && (
         <div>

@@ -16,13 +16,15 @@ function NavBar(props) {
     const [isCartOpen, setIsCartOpen] = useState(false) // put in a zero for the first one,
     const [isLoginOpen, setIsLoginOpen] = useState(false) // put in a zero for the first one,
     const [didLogin, setDidLogin] = useState(false)
-    const show = {
-      display: 'block'
-    };
+    // const [closeToggle, setcloseToggle] = useState(true)
+  //  for the show and hide on login w/o css
+    // const show = {
+    //   display: 'block'
+    // };
   
-    const hide = {
-      display: 'none'
-    };    
+    // const hide = {
+    //   display: 'none'
+    // };    
     
 
     return (
@@ -45,6 +47,7 @@ function NavBar(props) {
                         </button>
                     </li>
                     <li>
+                      {/* for use with css  */}
                     {!didLogin ? (
                       <button
                         onClick={() => {
@@ -69,7 +72,7 @@ function NavBar(props) {
                 </ul>
             </nav>
             {/* shopping cart toggle with css needed */}
-        {/* <div
+        <div
           className={isCartOpen ? 'mini-cart-open' : 'hidden-mini-cart'}
           aria-hidden={`${isCartOpen ? false : true}`}
         >
@@ -82,16 +85,20 @@ function NavBar(props) {
             }
             onClick={() => setIsCartOpen(!isCartOpen)}
           />
-        </div> */}
+        </div>
 
-      {/* no css version of view hidden on shopping cart*/ }
-      {
+      {/* version of view hidden on shopping cart WITHOUT CSS*/ }
+      {/* {
         <div style={isCartOpen ? show : hide}>
           <ShoppingCart />
         </div>
-      }   
-       {
-        <div style={isLoginOpen ? show : hide}>
+      }    */}
+       {<div
+          className={isLoginOpen ? 'login-open' : 'login-hidden'}
+          aria-hidden={`${isLoginOpen ? false : true}`}
+        >
+        <div class="login-menu">
+          
           <Login
             sendDataToParent={(event) => {
               console.log("from event")
@@ -99,6 +106,7 @@ function NavBar(props) {
               setDidLogin(event)
             }}
             />
+        </div>
         </div>
          }
          </div>
