@@ -4,6 +4,7 @@ import './style.css'
 // importing react 
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import '@stripe/stripe-js';
 
 
 //importing components 
@@ -16,7 +17,9 @@ import Logout from './components/Logout/Logout';
 // import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Footer from './components/Footer/Footer';
-
+import Checkout from './components/Elements/Checkout';
+import Success from './components/Elements/Success';
+import Canceled from './components/Elements/Canceled';
 
 function App() {
   return (
@@ -37,6 +40,9 @@ function App() {
               <Route path="/logout" element={<Logout />} />
               {/* <Route path="/login" element={<Login />} /> */}
               <Route path="/register" element={<Register />} />
+              <Route path="/success" element={<Success />} />
+              <Route path="/canceled" element={<Canceled />} />
+              <Route path="/checkout" element={<Checkout />} />
 
             </Routes>
           
