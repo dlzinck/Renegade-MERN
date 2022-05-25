@@ -2,7 +2,7 @@
 import React from 'react';
 // import Card from '../../components/ProductCard/ProductCard';
 import About from '../../components/About/About';
-import ProductCard from '../../components/ProductCard/ProductCard'
+// import ProductCard from '../../components/ProductCard/ProductCard'
 
 //IMPORTING COMPONENTS
 // below is an example of where the products would load, but these are not our products for this project
@@ -16,11 +16,11 @@ import ProductCard from '../../components/ProductCard/ProductCard'
 // }];
 function Home() {
     return (
-        <div>
+        <div id='home'>
             
             <img src='/images/RenegadeAttire_Landing.png' alt='landing page hero'></img>
             {/* <Card item={items}/> */}
-            <ProductCard />            
+            {/* <ProductCard />*/}
             <About />
         
         </div>

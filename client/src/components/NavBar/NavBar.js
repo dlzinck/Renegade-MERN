@@ -26,11 +26,16 @@ function NavBar(props) {
     //   display: 'none'
     // };    
     
-
+//trying to implement the logo as a link
     return (
         <div>
             <nav className='navbar'>
-                <ul>
+              <div className='logoLink' style={{ display: "inline" }}>
+              <Link to='/'>
+                <img className='navBarLogo' src='/images/RA-Logo-White.png'></img>
+              </Link>
+              </div>
+                <ul style={{ whiteSpace: "nowrap" }}>
                     <li><Link to="/">HOME</Link>
                     </li>
                     <li><a href='#about'>ABOUT</a>
