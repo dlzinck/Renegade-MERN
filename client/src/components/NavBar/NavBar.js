@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; //module react router dom
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import Login from '../Login/Login';
+import ReactDOM from 'react-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCreditCard } from '@fortawesome/free-solid-svg-icons'
+const shoppingCartEl = <FontAwesomeIcon icon={faCreditCard} />
 
 function NavBar(props) {
   useEffect(() => {
@@ -48,7 +52,7 @@ function NavBar(props) {
                         setIsCartOpen(!isCartOpen);
                         console.log("in onclick listener");
                         }}>
-                          font Icon here
+                         <i class="far fa-credit-card"><FontAwesomeIcon icon={faCreditCard} /></i>
                         </button>
                     </li>
                     <li>
