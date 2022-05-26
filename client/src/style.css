@@ -123,3 +123,25 @@ li {
     justify-content: center;
     
 }
+
+#about {
+    align-items:center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#about > h1 {
+    text-align: center;
+}
+#about > p {
+    text-align: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-bottom: 50px;
+}
+#about > img {    
+    height: 100px;
+    width: 180px;
+    display:flex;
+    justify-content: center;
+}
