@@ -145,3 +145,8 @@ li {
     display:flex;
     justify-content: center;
 }
+
+#home > img {
+    height:auto;
+    width: 100%;
+}
