@@ -1,20 +1,33 @@
 .navbar {
     background-color: black;
     color: white;
-    height: 100px;
+    height: 150px;
     width: 100%;
+    display: inline-block;
+    flex-direction: row;
+}
+
+.navBarLogo {
+    height: 90px;
+    width: auto;
+    padding: 5px;
 }
 
 .navbar > ul {
-    display: flex;
+    display: inline-flex;
+    justify-content: flex;
+    flex-direction: row;
+    padding-left: 900px;
 }
 
 .navbar > ul > li {
-    padding: 20px;
+    padding: 2px;
+    /* width: 50px; */
     flex: 1;
+    /* flex-shrink: 3; */
     color:white;
     list-style: none;
-    justify-content: space-between;
+    justify-content: center;
     font-weight:bold;
     font-size: 16px;
 }
