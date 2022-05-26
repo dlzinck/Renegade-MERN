@@ -4,6 +4,8 @@ const mongodb = require("mongodb").MongoClient;
 const stripeSecret = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const stripePub = require("stripe")(process.env.STRIPE_PUBLISHABLE_KEY);
 const axios = require("axios").default;
+const util = require('util');
+const cors = require('cors');
 
 const STOREFRONT_ACCESS_TOKEN = "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";
 const GRAPHQL_URL =
@@ -13,6 +15,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 
 const app = express();
+app.use(cors({origin: 'http://localhost:3000'}));
 const port = 3001;
 
 // Connection string to local instance of MongoDB including database name
@@ -66,13 +69,51 @@ function fetchInventory(callBack) {
     .catch((error) => {
       console.log(error);
     })
-    .then((data) => data.data)
     .then((data) => {
-      const edges = data.data.products.edges;
+      // console.log('data', util.inspect(data.data, {depth: 7, color: true}));
+      return data.data;
+    })
+    .then((data) => {
+      return data.data.products.edges;
+      // const edges = data.data.products.edges;
+      // for (let i = 0; i < edges.length; i++) {
+      //   const bodyTwo = {
+      //     query: `query {    product(id: \"${edges[i].node.id}\") {      title        description        priceRangeV2{        maxVariantPrice{          amount        }      }      media(first: 5) {        edges {          node {            ... fieldsForMediaTypes          }        }      }  }}fragment fieldsForMediaTypes on Media {  alt  mediaContentType  preview {    image {      id      altText      originalSrc    }  }  ... on MediaImage {    id    image {      altText      originalSrc    }  }}`,
+      //   }; //edges are one of the queries between the nodes, want to access the web, it will return the edges of that when queried, so all the info that falls within the scope of the query, clusters of info
+      //   axios
+      //     .post(
+      //       "https://renegadeattires.myshopify.com/admin/api/graphql.json",
+      //       bodyTwo,
+      //       {
+      //         headers: {
+      //           "Access-Control-Allow-Origin": "*",
+      //           "X-Shopify-Access-Token":
+      //             "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",
+      //           "Content-Type": "application/json",
+      //         },
+      //       }
+      //     )
+      //     .catch((error) => console.log(error))
+      //     .then((response) => response.data)
+      //     .then((data) => {
+      //       // console.log('data', util.inspect(data.data, {depth: 7, color: true}));
+      //       arrofProducts.push(data);
+      //       console.log('arrofProducts', arrofProducts);
+      //       return arrofProducts;
+      //     });
+      // }
+      // if (arrofProducts.length === edges.length) {
+      //   console.log('arrofProducts.length === edges.length');
+      //   console.log('arrofProducts', arrofProducts);
+      //   return arrofProducts;
+      // }
+      // return arrofProducts;
+    })
+    .then((edges) => {
       for (let i = 0; i < edges.length; i++) {
         const bodyTwo = {
           query: `query {    product(id: \"${edges[i].node.id}\") {      title        description        priceRangeV2{        maxVariantPrice{          amount        }      }      media(first: 5) {        edges {          node {            ... fieldsForMediaTypes          }        }      }  }}fragment fieldsForMediaTypes on Media {  alt  mediaContentType  preview {    image {      id      altText      originalSrc    }  }  ... on MediaImage {    id    image {      altText      originalSrc    }  }}`,
-        };
+        }; //edges are one of the queries between the nodes, want to access the web, it will return the edges of that when queried, so all the info that falls within the scope of the query, clusters of info
         axios
           .post(
             "https://renegadeattires.myshopify.com/admin/api/graphql.json",
@@ -89,23 +130,32 @@ function fetchInventory(callBack) {
           .catch((error) => console.log(error))
           .then((response) => response.data)
           .then((data) => {
+            // console.log('data', util.inspect(data.data, {depth: 7, color: true}));
             arrofProducts.push(data);
+            if (arrofProducts.length === edges.length) {
+              // console.log('arrofProducts.length === edges.length');
+              // console.log('arrofProducts', arrofProducts);
+              return arrofProducts;
+            }
+            return arrofProducts;
+            // console.log('arrofProducts', arrofProducts);
+          })
+          .then((results) => {
+            // console.log(results);
+            if (arrofProducts.length === edges.length) {
+              callBack(results);
+            }
           });
       }
-      if (arrofProducts.length === edges.length) {
-        return arrofProducts;
-      }
     })
-    .then((results) => {
-      console.log(results);
-      callBack(results);
-    });
 }
 
 app.get("/inventory", (req, res) => {
   const results = [];
   fetchInventory((allResults) => {
+    console.log('allResults fetchInventory', allResults);
     if (allResults && allResults.length > 0) {
+      console.log('allResults && allResults.length > 0');
       allResults.forEach((result, index) => {
         const data = {
           title: result.data.product.title,
@@ -116,11 +166,12 @@ app.get("/inventory", (req, res) => {
         };
         results.push(data);
         if (index === allResults.length - 1) {
+          console.log("right before res.status send");
           res.status(200).json({ result: results });
         }
       });
     } else {
-      res.status(200).json({ result: [] });
+      res.status(200).json({ result: ['none'] });
     }
   });
 });
