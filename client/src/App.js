@@ -4,7 +4,7 @@ import './style.css'
 // importing react 
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import '@stripe/stripe-js';
+// import '@stripe/stripe-js';
 
 
 //importing components 
