@@ -150,3 +150,24 @@ li {
     height:auto;
     width: 100%;
 }
+
+#contact {
+    display:block;
+    justify-content: center;    
+    flex-wrap: none;
+    padding: 20px;    
+}
+#contact > h1 {
+    text-align: center;
+}
+#contact > .contactForm {
+    padding-left: 20%;
+    max-width: 1000px;
+    min-width: 200px;
+    height: auto;    
+}
+
+#contact > .contactForm > fieldset > input {
+    width: 100%;
+    padding: 1px;
+}

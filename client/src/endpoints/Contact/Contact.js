@@ -29,9 +29,9 @@ function Contact() {
     });
   };
   return (
-    <div>
+    <div id='contact'>
       <h1>Contact Us</h1>
-      <form>
+      <form className="contactForm">
         <fieldset>
           <label htmlFor="name">Name:</label>
 
