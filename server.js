@@ -21,7 +21,7 @@ const connectionStringURI = `mongodb://127.0.0.1:27017/shelterDB`;
 let db;
 
 let edges;
-
+// FETCH CAN NEVER RUN ON THE BACK END
 let arrofProducts = [];
 function fetchInventory() {
     fetch("https://renegadeattires.myshopify.com/admin/api/graphql.json", {
