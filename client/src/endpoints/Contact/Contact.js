@@ -9,7 +9,14 @@ function Contact() {
     event.preventDefault();
     setSubmittedContact(true);
     const data = { name: name, message: message, email: email };
-    const url = "http://localhost:8000/"; //change when gets depoloyed to production
+    console.log('before')
+    const endpoint = process.env.REACT_APP_BACKEND_URL.replaceAll(
+      '"',
+      ""
+    ).replaceAll(";", "")
+      console.log('second replaceall')
+    console.log(endpoint)
+    const url = `${endpoint}/sendmail` //change when gets depoloyed to production
     const response = fetch(url, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, *cors, same-origin

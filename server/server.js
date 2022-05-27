@@ -15,7 +15,8 @@ const bodyParser = require("body-parser");
 const path = require("path");
 
 const app = express();
-app.use(cors({origin: 'http://localhost:3000'}));
+app.use(cors());// take away object origin for production {origin: 'http://localhost:3000'}
+app.use(bodyParser.json());
 const port = 3001;
 
 // Connection string to local instance of MongoDB including database name
@@ -174,6 +175,29 @@ app.get("/inventory", (req, res) => {
       res.status(200).json({ result: ['none'] });
     }
   });
+});
+
+app.post("/sendmail", (req, res) => {
+  const body = {
+    name: req.body.name,
+    email: req.body.email,
+    message: req.body.message,
+  };
+  const send = require("gmail-send")({
+    user: "renegadecontactus@gmail.com",
+    pass: "Renegadepassword",
+    to: "renegadecontactus@gmail.com",
+    subject: "From Contact Form",
+  });
+  send(
+    {
+      text: JSON.stringify(body),
+    },
+    (error, result, fullResult) => {
+      if (error) console.error(error);
+      res.status(200).json({ result: fullResult });
+    }
+  );
 });
 
 // Creates a connection to a MongoDB instance and returns the reference to the database
