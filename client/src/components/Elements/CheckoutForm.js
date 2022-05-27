@@ -1,4 +1,6 @@
 import {useStripe, useElements, PaymentElement, CardElement , CardNumberElement , CardExpiryElement , CardCvcElement} from '@stripe/react-stripe-js';
+import { useStoreContext } from "../../utils/GlobalState";
+// import { model } from 'mongoose';
 
 const CheckoutForm = () => {
     const stripe = useStripe();
@@ -43,3 +45,5 @@ const CheckoutForm = () => {
         </form>
     );
 };
+
+export default CheckoutForm;

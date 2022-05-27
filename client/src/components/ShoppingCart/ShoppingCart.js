@@ -1,14 +1,12 @@
 import React from 'react';
+import CheckoutForm from '../Elements/CheckoutForm'
 
 function ShoppingCart() {
     return (
         <div>
             
             <h1>Renegade Shopping Cart</h1>
-            <ul>
-                <li>Product Name</li>
-                <li>Price:$$</li>
-            </ul>
+            <CheckoutForm />
 
             <button>CHOOSE</button>
             
